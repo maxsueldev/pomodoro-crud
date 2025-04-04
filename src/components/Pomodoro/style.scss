@@ -1,0 +1,50 @@
+.app {
+    text-align: center;
+
+    &__section-card-container {
+        background-color: var(--bg-secondary);
+        color: var(--white-color);
+        width: 540px;
+        border-radius: 6px;
+        padding: 2rem 0;
+        margin: 6rem auto 0 auto;
+    }
+
+    &__card-list {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+
+        button {
+            font-size: 1.2rem;
+            color: var(--white-color);
+            background: transparent;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            padding: .4rem 1rem;
+
+            &.active {
+                background-color: var(--active-color);
+            }
+        }
+    }
+
+    &__card-timer {
+        font-size: 4rem;
+        margin: 1.6rem 0;
+    }
+
+    &__card-button {
+        background-color: var(--gray-color);
+        color: var(--white-color);
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        padding: .5rem 1rem;
+
+        span {
+            margin-left: 6px;
+        }
+    }
+}

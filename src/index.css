@@ -1,0 +1,22 @@
+:root {
+  --white-color: #d1d1d1;
+  --gray-color: #1f1f1f;
+  --active-color: #0a1f2d;
+  --bg-default: #121212;
+  --bg-secondary: #6200ee;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg-default);
+}
+
+li {
+  list-style: none;
+}
