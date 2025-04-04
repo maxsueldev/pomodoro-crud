@@ -1,10 +1,6 @@
+import CardTask from "./CardTask";
+import ITask from "../../interface/ITask";
 import "./style.scss";
-
-interface ITask {
-  id: number;
-  description: string;
-  completed: string;
-}
 
 interface ApplicationState {
   tasks: ITask[];
@@ -39,7 +35,7 @@ const Tasks = () => {
 
       <ul className="app__tasks-list">
         {initialState.tasks.map((task) => (
-          <li>{task.description}</li>
+          <CardTask key={task.id} task={task} />
         ))}
       </ul>
     </section>

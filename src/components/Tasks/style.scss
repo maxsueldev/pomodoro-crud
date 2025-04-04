@@ -3,4 +3,14 @@
         color: var(--white-color);
         margin-top: 1.8rem;
     }
+
+    &__tasks-list {
+        text-align: start;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: .5rem;
+        margin-top: 1rem;
+    }
 }
