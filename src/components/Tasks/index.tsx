@@ -1,41 +1,30 @@
-import CardTask from "./CardTask";
+import IApplicationState from "../../interface/IApplicationState";
 import ITask from "../../interface/ITask";
+import CardTask from "./CardTask";
 import "./style.scss";
 
-interface ApplicationState {
-  tasks: ITask[];
-  taskSelected: ITask | null;
-  editing: boolean;
+interface ITasksProps {
+  state: IApplicationState;
+  selectTask: (task: ITask) => void;
+  onEditTask: (task: ITask) => void;
 }
 
-let initialState = {
-  tasks: [
-    {
-      id: 0,
-      description: "Estudar Angular",
-      completed: false,
-    },
-    {
-      id: 1,
-      description: "Estudar React",
-      completed: true,
-    },
-    {
-      id: 2,
-      description: "Arrumar o quarto",
-      completed: false,
-    },
-  ],
-};
-
-const Tasks = () => {
+const Tasks: React.FC<ITasksProps> = ({ state, selectTask, onEditTask }) => {
   return (
     <section className="app__section-tasks-container">
-      <span className="app__task-selected">#Em andamento</span>
+      <span className="app__task-selected">
+        {state.selectedTask ? state.selectedTask.description : "#Em andamento"}
+      </span>
 
       <ul className="app__tasks-list">
-        {initialState.tasks.map((task) => (
-          <CardTask key={task.id} task={task} />
+        {state.tasks.map((task) => (
+          <CardTask
+            key={task.id}
+            task={task}
+            selectTask={selectTask}
+            state={state}
+            onEditTask={onEditTask}
+          />
         ))}
       </ul>
     </section>

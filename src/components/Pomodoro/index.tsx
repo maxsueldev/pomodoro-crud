@@ -1,8 +1,15 @@
 import { useState, useRef } from "react";
+import IApplicationState from "../../interface/IApplicationState";
+import ITask from "../../interface/ITask";
 import { FaPlay, FaPause } from "react-icons/fa";
 import "./style.scss";
 
-const Pomodoro = () => {
+interface IPomodoroProps {
+  state: IApplicationState;
+  changeCompletedTask: (task: ITask) => void;
+}
+
+const Pomodoro: React.FC<IPomodoroProps> = ({ state, changeCompletedTask }) => {
   const [timer, setTimer] = useState<number>(25);
   const [currentTimer, setCurrentTimer] = useState<string>("focus");
   const intervalRef = useRef<number | null>(null);
@@ -44,6 +51,10 @@ const Pomodoro = () => {
     if (timerRef.current <= 0) {
       zerar();
       if (currentTimer === "focus") {
+        if (state.selectedTask && state.selectedTask.completed === false) {
+          changeCompletedTask(state.selectedTask);
+        }
+
         const event = new CustomEvent(" ", {
           detail: {
             message: "A tarefa foi concluída com sucesso!",
@@ -52,6 +63,7 @@ const Pomodoro = () => {
           bubbles: true,
           cancelable: true,
         });
+
         document.dispatchEvent(event);
       }
 

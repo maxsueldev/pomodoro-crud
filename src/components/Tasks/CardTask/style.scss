@@ -15,10 +15,22 @@
             background-color: gray;
         }
 
-        &--actions svg {
-            margin-left: .6rem;
-            cursor: pointer;
+        &--actions {
+            button {
+                background: transparent;
+                border: none;
+
+                svg {
+                    color: var(--white-color);
+                    font-size: 1rem;
+                    margin-left: .6rem;
+                    cursor: pointer;
+                }
+            }
         }
-        
+    }
+
+    .task-selected {
+        border: 2px solid white;
     }
 }
