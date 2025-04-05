@@ -1,25 +1,12 @@
 import { useEffect, useState } from "react";
 import { MdCancel, MdDelete, MdOutlineAdd, MdSave } from "react-icons/md";
 import "./style.scss";
-import IApplicationState from "../../interface/IApplicationState";
-import ITask from "../../interface/ITask";
+import UseTasks from "../../hooks/UseTasks";
 
-interface FormAddTaskProps {
-  state: IApplicationState;
-  clearStateForm: () => void;
-  changeOpenForm: () => void;
-  openForm: boolean;
-  onDeleteTask: (task: ITask | null) => void;
-  onSaveTask: (task: ITask | null, textarea: string) => void;
-}
+const FormAddTask: React.FC = () => {
+  const { state, changeOpenForm, openForm, onDeleteTask, onSaveTask } =
+    UseTasks();
 
-const FormAddTask: React.FC<FormAddTaskProps> = ({
-  state,
-  changeOpenForm,
-  openForm,
-  onDeleteTask,
-  onSaveTask,
-}) => {
   const [textarea, setTextarea] = useState<string>("");
 
   useEffect(() => {

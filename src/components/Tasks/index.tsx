@@ -1,15 +1,10 @@
-import IApplicationState from "../../interface/IApplicationState";
-import ITask from "../../interface/ITask";
+import UseTasks from "../../hooks/UseTasks";
 import CardTask from "./CardTask";
 import "./style.scss";
 
-interface ITasksProps {
-  state: IApplicationState;
-  selectTask: (task: ITask) => void;
-  onEditTask: (task: ITask) => void;
-}
+const Tasks: React.FC = () => {
+  const { state, selectTask, onEditTask } = UseTasks();
 
-const Tasks: React.FC<ITasksProps> = ({ state, selectTask, onEditTask }) => {
   return (
     <section className="app__section-tasks-container">
       <span className="app__task-selected">

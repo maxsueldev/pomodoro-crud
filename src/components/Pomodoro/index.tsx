@@ -1,15 +1,11 @@
 import { useState, useRef } from "react";
-import IApplicationState from "../../interface/IApplicationState";
-import ITask from "../../interface/ITask";
+import UseTasks from "../../hooks/UseTasks";
 import { FaPlay, FaPause } from "react-icons/fa";
 import "./style.scss";
 
-interface IPomodoroProps {
-  state: IApplicationState;
-  changeCompletedTask: (task: ITask) => void;
-}
+const Pomodoro: React.FC = () => {
+  const { state, changeCompletedTask } = UseTasks();
 
-const Pomodoro: React.FC<IPomodoroProps> = ({ state, changeCompletedTask }) => {
   const [timer, setTimer] = useState<number>(25);
   const [currentTimer, setCurrentTimer] = useState<string>("focus");
   const intervalRef = useRef<number | null>(null);
